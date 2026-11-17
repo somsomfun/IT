@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品一覧サンプル</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; max-width: 600px; }
+    th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>商品一覧（Neon DB連携テスト）</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>商品名</th>
+        <th>価格</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach((product) => { %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price.toLocaleString() %> 円</td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
