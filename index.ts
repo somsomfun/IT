@@ -36,6 +36,17 @@ app.get('/api/db-check', async (_req: Request, res: Response) => {
   }
 });
 
+// 「/db-sample」にアクセスされたときの処理（商品一覧表示用）
+app.get('/db-sample', async (_req: Request, res: Response) => {
+  try {
+    const result = await pool.query('SELECT id, name, price FROM products ORDER BY id ASC');
+    res.render('db-sample', { products: result.rows });
+  } catch (error) {
+    console.error('商品一覧の取得に失敗しました', error);
+    res.status(500).send('データベースエラーが発生しました');
+  }
+});
+
 // ------------------------------
 // サーバー起動
 // ------------------------------
